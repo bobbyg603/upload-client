@@ -35,5 +35,26 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.5.2"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.0.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobbyg603/upload-client.git"
+  },
+  "keywords": [
+    "angular",
+    "file",
+    "upload",
+    "client",
+    "rxjs",
+    "scan",
+    "example"
+  ],
+  "author": "@bobbyg603",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bobbyg603/upload-client/issues"
+  },
+  "homepage": "https://github.com/bobbyg603/upload-client#readme"
 }
