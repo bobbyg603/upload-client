@@ -1,0 +1,24 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="modal-basic-title">
+            Upload Files
+        </h5>
+        <button type="button" class="btn-close btn-close-white" aria-label="Close"
+            (click)="modal.close('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <p class="lead">Drag and drop files or click the select files link below to upload.</p>
+        <common-drag-drop (filesDropped)="onFilesDropped($event)"></common-drag-drop>
+        <ng-container *ngIf="uploads$ | async as uploads; else noUploads">
+            <ul class="mt-2">
+                <li *ngFor="let upload of uploads">{{upload | json}}</li>
+            </ul>
+        </ng-container>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Close</button>
+    </div>
+</ng-template>
+<ng-template #noUploads>
+    <div class="mt-2">No files selected</div>
+</ng-template>

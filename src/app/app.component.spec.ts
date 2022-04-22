@@ -1,31 +1,36 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Title } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+import { MockComponent } from 'ng-mocks';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MainComponent } from './main/main.component';
+import { AlertComponent } from './alert/alert.component';
 
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>
+  let component: AppComponent;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        MockComponent(NavbarComponent),
+        MockComponent(MainComponent),
+        MockComponent(AlertComponent)
       ],
     }).compileComponents();
+
+    fixture = TestBed.createComponent(AppComponent);
+    
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'client'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('client');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('client app is running!');
+  it(`should have as title 'Upload | @bobbyg603'`, () => {
+    expect(TestBed.inject(Title).getTitle()).toEqual('Upload | @bobbyg603');
   });
 });

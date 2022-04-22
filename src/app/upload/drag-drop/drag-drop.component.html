@@ -1,0 +1,19 @@
+<ngx-file-drop dropZoneLabel="Drop file here"
+  [dropZoneClassName]="dropZoneClassName"
+  [disabled]="disabled"
+  [multiple]="multiple"
+  [accept]="accept"
+  (onFileDrop)="dropped($event)">
+  <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+    <div>
+      <fa-icon [icon]="faUpload" [class.text-muted]="disabled" size="2x"></fa-icon>
+    </div>
+    <div [hidden]="disabled" class="mt-4">
+      <a [routerLink]="[]" queryParamsHandling="preserve"
+        (click)="openFileSelector()">{{ selectFilesDescription }}</a>&nbsp;or drag and drop
+    </div>
+    <div [hidden]="!disabled" class="mt-4 text-muted">
+      {{ disabledText || selectFilesDescription + ' or drag and drop' }}
+    </div>
+  </ng-template>
+</ngx-file-drop>

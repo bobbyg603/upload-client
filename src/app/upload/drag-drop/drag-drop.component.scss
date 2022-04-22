@@ -1,0 +1,49 @@
+$colors-blue-primary: #007bfd;
+$colors-border: #dfe2e5;
+$colors-text-primary: #001428;
+$colors-text-muted: #6c757d;
+$font-family-standard: 'Inter', sans-serif;
+
+:host ::ng-deep {
+
+  ngx-file-drop {
+    div.ngx-file-drop__content,
+    div.ngx-file-drop__drop-zone--enabled,
+    div.ngx-file-drop__drop-zone--disabled {
+      height: 200px;
+      border-radius: 30px;
+      color: $colors-text-muted;
+      font-size: 18px;
+      font-weight: 400;
+      font-family: $font-family-standard;
+      flex-direction: column;
+      transition: all .2s ease-in-out;
+
+      a {
+        color: $colors-text-muted;
+        text-decoration: none;
+      }
+    }
+
+    div.ngx-file-drop__content:hover {
+      color: $colors-text-primary;
+      
+      a {
+        color: $colors-blue-primary;
+      }
+    }
+
+    div.ngx-file-drop__drop-zone--enabled,
+    div.ngx-file-drop__drop-zone--disabled {
+      border: 3px dashed $colors-border;
+    }
+
+    div.ngx-file-drop__drop-zone--enabled:hover {
+      border-color: $colors-text-primary;
+    }
+
+    div.ngx-file-drop__drop-zone--disabled:hover {
+      border: 3px dashed $colors-border;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<main>
+    <div class="container-xxl my-md-4">
+        <h1>Files</h1>
+        <button class="btn btn-outline-primary" (click)="uploadModalOpen = true">
+            Upload <fa-icon [icon]="faUpload"></fa-icon>
+        </button>
+    </div>
+</main>
+<app-upload-modal [(open)]="uploadModalOpen"></app-upload-modal>

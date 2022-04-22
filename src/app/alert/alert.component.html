@@ -1,0 +1,14 @@
+<ul>
+  <li *ngFor="let alert of alerts">
+    <div class="d-flex justify-content-between rounded cursor-pointer p-3 mt-2 w-100"
+      [ngClass]="alert | alertColorClassName" (click)="onRemoveAlertClick(alert.id)">
+      <div></div>
+      <div>
+        {{alert.message}}
+      </div>
+      <div>
+        <button type="button" class="btn-close float-right" aria-label="Close"></button>
+      </div>
+    </div>
+  </li>
+</ul>
