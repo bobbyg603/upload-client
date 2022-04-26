@@ -11,7 +11,7 @@ import { AlertService } from 'src/app/alert/alert.service';
 })
 export class DragDropComponent {
 
-  @Input() accept: string = '.png,.mov'; // TODO BG allow *
+  @Input() accept: string = '';
   @Input() disabled: boolean = false;
   @Input() multiple: boolean = true;
   @Input() disabledText: string = this.selectFilesDescription;
@@ -44,10 +44,10 @@ export class DragDropComponent {
         return false;
       }
 
-      // TODO BG support *
       const extension = file.fileEntry.name.split('.').pop();
-      const allowed = this.accept.split(',');
-      if (!allowed.find(allowedExt => allowedExt.trim().slice(1) === extension)) {
+      const allowed = this.accept.split(',').find(allowedExt => allowedExt.trim().slice(1) === extension);
+      const allowAll = !this.accept;
+      if (!allowed && !allowAll) {
         this._alertService.pushAlert(
           `${file.fileEntry.name} is an unsupported file type`,
           AlertColor.Red

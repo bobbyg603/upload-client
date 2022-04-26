@@ -108,10 +108,30 @@ describe('DragDropComponent', () => {
   });
 
   describe('dropped', () => {
-    it('should emit files if valid', async () => {
+    it('should emit files if extensions match accepted extensions', async () => {
       const files: any = [{
         fileEntry: {
           name: 'foo.exe'
+        }
+      },
+      {
+        fileEntry: {
+          name: 'bin.pdb'
+        }
+      }];
+      const resultPromise = firstValueFrom(component.filesDropped as any);
+
+      component.dropped(files);
+      const result = await resultPromise;
+
+      expect(result).toEqual(files);
+    });
+
+    it('should emit files if no accept extensions have been specified', async () => {
+      component.accept = '';
+      const files: any = [{
+        fileEntry: {
+          name: 'foo.h'
         }
       },
       {
