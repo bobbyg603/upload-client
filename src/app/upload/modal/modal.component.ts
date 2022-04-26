@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
-import { NgxFileDropEntry } from '@bugsplat/ngx-file-drop';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-upload-modal',
@@ -26,22 +24,11 @@ export class ModalComponent {
   }
 
   @Output() openChange = new EventEmitter<boolean>();
+  @Output() uploadComplete = new EventEmitter<void>();
 
   @ViewChild('content') modalContent!: TemplateRef<any>;
 
-  uploads$: Observable<any>;
-
-  private _uploadsSubject = new Subject<any>();
-  
-  constructor(private _modalService: NgbModal) {
-    this.uploads$ = this._uploadsSubject.asObservable();
-  }
-
-  onFilesDropped(files: NgxFileDropEntry[]): void {
-    this._uploadsSubject.next(
-      files.map(file => file.relativePath)
-    );
-  }
+  constructor(private _modalService: NgbModal) { }
 
   private handleModalResult(result: any): void {
     this.openChange.next(false);

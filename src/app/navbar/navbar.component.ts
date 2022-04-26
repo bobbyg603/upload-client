@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faMedium, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faRocket } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -11,4 +11,6 @@ export class NavbarComponent {
   faRocket = faRocket;
   faGithub = faGithub;
   faTwitter = faTwitter;
+  faMedium = faMedium;
+  faYoutube = faYoutube;
 }

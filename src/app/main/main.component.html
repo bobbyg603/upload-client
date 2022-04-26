@@ -1,9 +1,30 @@
-<main>
-    <div class="container-xxl my-md-4">
+<main class="container-xxl my-md-4">
+    <section class="d-flex justify-content-between">
         <h1>Files</h1>
-        <button class="btn btn-outline-primary" (click)="uploadModalOpen = true">
-            Upload <fa-icon [icon]="faUpload"></fa-icon>
+        <button class="btn btn-outline-primary mx-2" (click)="uploadModalOpen = true">
+            <fa-icon [icon]="faFilePlus"></fa-icon>
         </button>
-    </div>
+    </section>
+    <hr class="my-2">
+    <section>
+        <div [hidden]="!loading" class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <table [hidden]="loading" class="table">
+            <tbody>
+                <tr *ngFor="let file of files$ | async">
+                    <td>
+                        <a [href]="file.url">{{file.name}}</a>
+                    </td>
+                    <td>
+                        {{ file.uploaded | date:'long' }}
+                    </td>
+                    <td>
+                        {{ file.size / (1024 * 10 * 10 * 10) | number:'.2-2' }} MB
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 </main>
-<app-upload-modal [(open)]="uploadModalOpen"></app-upload-modal>
+<app-upload-modal [(open)]="uploadModalOpen" (uploadComplete)="onUploadComplete()"></app-upload-modal>

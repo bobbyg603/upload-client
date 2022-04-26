@@ -11,7 +11,7 @@ import { AlertService } from 'src/app/alert/alert.service';
 })
 export class DragDropComponent {
 
-  @Input() accept: string = '.png'; // TODO BG allow *
+  @Input() accept: string = '.png,.mov'; // TODO BG allow *
   @Input() disabled: boolean = false;
   @Input() multiple: boolean = true;
   @Input() disabledText: string = this.selectFilesDescription;

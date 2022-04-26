@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { firstValueFrom, map } from 'rxjs';
-
+import { firstValueFrom } from 'rxjs';
 import { ModalComponent } from './modal.component';
 
 describe('ModalComponent', () => {
@@ -36,7 +35,7 @@ describe('ModalComponent', () => {
       resultPromise = Promise.resolve('woo!');
       const result = resultPromise;
       modalService.open.and.returnValue({ result });
-    })
+    });
 
     describe('set', () => {
       it('should call open with content and options', async () => {
@@ -63,27 +62,6 @@ describe('ModalComponent', () => {
         
         expect(emitted).toEqual(true);
       });
-    });
-  });
-
-  describe('onFilesDropped', () => {
-    it('should cause uploads$ to emit event containing files mapped to relative paths', async () => {
-      const uploadsPromise = firstValueFrom(component.uploads$);
-      const files = [
-        {
-          relativePath: '1.txt'
-        },
-        {
-          relativePath: '2.txt'
-        }
-      ] as any;
-
-      component.onFilesDropped(files);
-      const uploads = await uploadsPromise;
-
-      expect(uploads).toEqual(
-        jasmine.arrayContaining(files.map((file: any) => file.relativePath))
-      );
     });
   });
 });
