@@ -1,8 +1,8 @@
 <p class="lead">Drag and drop files or click the select files link below to upload.</p>
 <common-drag-drop (filesDropped)="onFilesDropped($event)"></common-drag-drop>
-<ng-container *ngIf="uploads$ | async as uploads; else noUploads">
+<div *ngIf="uploads$ | async as uploads; else noUploads" class="container progress-container">
     <div *ngFor="let upload of uploads" class="row mt-2">
-        <div class="col-4">
+        <div class="col-6 px-0">
             <span [class.text-danger]="upload.failed">{{upload.name}}</span>
             <span *ngIf="upload.done && !upload.failed" class="text-success pl-2">
                 <fa-icon class="mx-2" [icon]="faCheck"></fa-icon>
@@ -11,12 +11,12 @@
                 <fa-icon class="mx-2" [icon]="faX"></fa-icon>
             </span>
         </div>
-        <div class="col-8 pt-2">
+        <div class="col-6 pt-2 px-0">
             <ngb-progressbar [type]="upload.failed ? 'danger' : 'success'" textType="white" [value]="upload.progress"
                 [showValue]="true"></ngb-progressbar>
         </div>
     </div>
-</ng-container>
+</div>
 <ng-template #noUploads>
     <div class="mt-2">No files selected</div>
 </ng-template>

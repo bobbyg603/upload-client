@@ -25,10 +25,23 @@ export class ModalComponent {
 
   @Output() openChange = new EventEmitter<boolean>();
   @Output() uploadComplete = new EventEmitter<void>();
+  @Output() uploadStart = new EventEmitter<void>();
 
   @ViewChild('content') modalContent!: TemplateRef<any>;
 
+  closeButtonDisabled = false;
+
   constructor(private _modalService: NgbModal) { }
+
+  onUploadComplete(): void {
+    this.closeButtonDisabled = false;
+    this.uploadComplete.next();
+  }
+
+  onUploadStart(): void {
+    this.closeButtonDisabled = true;
+    this.uploadStart.next();
+  }
 
   private handleModalResult(result: any): void {
     this.openChange.next(false);

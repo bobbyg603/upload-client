@@ -1,7 +1,7 @@
-import { HttpClient, HttpEvent, HttpEventType, HttpProgressEvent, HttpUploadProgressEvent } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpEventType, HttpUploadProgressEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgxFileDropEntry } from '@bugsplat/ngx-file-drop';
-import { bindCallback, catchError, filter, from, map, mergeMap, Observable, of, scan, switchMap } from 'rxjs';
+import { bindCallback, catchError, filter, from, map, mergeMap, Observable, of, scan, switchMap, takeWhile } from 'rxjs';
 import { AlertService } from 'src/app/alert/alert.service';
 import { environment } from 'src/environments/environment';
 import { v4 as uuid } from 'uuid';
@@ -85,7 +85,8 @@ export class FilesService {
                       });
                     })
                   );
-              })
+              }),
+              takeWhile(upload => !upload.done, true)
             );
         }),
         scan((acc, next) => {

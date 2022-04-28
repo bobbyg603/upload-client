@@ -7,9 +7,10 @@
             (click)="modal.close('Cross click')"></button>
     </div>
     <div class="modal-body">
-        <app-upload (uploadComplete)="uploadComplete.next()"></app-upload>
+        <app-upload (uploadComplete)="onUploadComplete()" (uploadStart)="onUploadStart()"></app-upload>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Close</button>
+        <button type="button" class="btn btn-primary" [disabled]="closeButtonDisabled"
+            (click)="modal.close('Save click')">Close</button>
     </div>
 </ng-template>
