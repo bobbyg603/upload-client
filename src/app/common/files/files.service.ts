@@ -1,4 +1,4 @@
-import { HttpClient, HttpEvent, HttpEventType, HttpUploadProgressEvent } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpEventType, HttpResponse, HttpUploadProgressEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgxFileDropEntry } from '@bugsplat/ngx-file-drop';
 import { bindCallback, catchError, filter, from, map, mergeMap, Observable, of, scan, switchMap, takeWhile } from 'rxjs';
@@ -54,6 +54,7 @@ export class FilesService {
               switchMap(file => {
                 return this.uploadFile(file)
                   .pipe(
+                    takeWhile((event) => event.type !== HttpEventType.Response, true),
                     filter(isHttpProgressEvent),
                     map((event) => {
                       const name = file.name;
@@ -85,8 +86,7 @@ export class FilesService {
                       });
                     })
                   );
-              }),
-              takeWhile(upload => !upload.done, true)
+              })
             );
         }),
         scan((acc, next) => {
