@@ -30,7 +30,7 @@ describe('AppComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'Upload | @bobbyg603'`, () => {
+  it(`should have title 'Upload | @bobbyg603'`, () => {
     expect(TestBed.inject(Title).getTitle()).toEqual('Upload | @bobbyg603');
   });
 });

@@ -1,4 +1,4 @@
-import { HttpClient, HttpEvent, HttpEventType, HttpResponse, HttpUploadProgressEvent } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpEventType, HttpUploadProgressEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgxFileDropEntry } from '@bugsplat/ngx-file-drop';
 import { bindCallback, catchError, filter, from, map, mergeMap, Observable, of, scan, switchMap, takeWhile } from 'rxjs';
@@ -22,7 +22,7 @@ export class FilesService {
     return this._httpClient.get<UploadedFile[]>(`${environment.baseUrl}/files`);
   }
 
-  uploadFile(file: File): Observable<HttpEvent<any>> {
+  uploadFile(file: File): Observable<HttpEvent<unknown>> {
     const url = `${environment.baseUrl}/upload`;
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
