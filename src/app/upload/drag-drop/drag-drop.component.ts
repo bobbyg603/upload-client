@@ -5,7 +5,7 @@ import { AlertColor } from 'src/app/alert/alert';
 import { AlertService } from 'src/app/alert/alert.service';
 
 @Component({
-  selector: 'common-drag-drop',
+  selector: 'app-drag-drop',
   templateUrl: './drag-drop.component.html',
   styleUrls: ['./drag-drop.component.scss']
 })

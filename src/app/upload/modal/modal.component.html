@@ -3,14 +3,13 @@
         <h5 class="modal-title" id="modal-basic-title">
             Upload Files
         </h5>
-        <button type="button" class="btn-close btn-close-white" aria-label="Close"
-            (click)="modal.close('Cross click')"></button>
+        <button class="btn-close btn-close-white" aria-label="Close" (click)="modal.close('Cross click')"></button>
     </div>
     <div class="modal-body">
         <app-upload (uploadComplete)="onUploadComplete()" (uploadStart)="onUploadStart()"></app-upload>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary" [disabled]="closeButtonDisabled"
+        <button class="btn btn-primary" data-cy="upload-modal-close-button" [disabled]="closeButtonDisabled"
             (click)="modal.close('Save click')">Close</button>
     </div>
 </ng-template>

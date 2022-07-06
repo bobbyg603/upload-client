@@ -1,7 +1,8 @@
 <main class="container-xxl my-md-4">
     <section class="d-flex justify-content-between">
         <h1>Files</h1>
-        <button class="btn btn-outline-primary mx-2" (click)="uploadModalOpen = true">
+        <button class="btn btn-outline-primary mx-2" data-cy="open-upload-modal-button"
+            (click)="uploadModalOpen = true">
             <fa-icon [icon]="faFilePlus"></fa-icon>
         </button>
     </section>
@@ -10,7 +11,7 @@
         <div [hidden]="!loading" class="spinner-border text-primary" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-        <table [hidden]="loading" class="table">
+        <table class="table" data-cy="files-table" [hidden]="loading">
             <tbody>
                 <tr *ngFor="let file of files$ | async">
                     <td>
@@ -27,4 +28,5 @@
         </table>
     </section>
 </main>
-<app-upload-modal [(open)]="uploadModalOpen" (uploadComplete)="onUploadComplete()"></app-upload-modal>
+<app-upload-modal data-cy="upload-modal" [(open)]="uploadModalOpen" (uploadComplete)="onUploadComplete()">
+</app-upload-modal>

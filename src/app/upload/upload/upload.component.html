@@ -1,5 +1,5 @@
 <p class="lead">Drag and drop files or click the select files link below to upload.</p>
-<common-drag-drop (filesDropped)="onFilesDropped($event)"></common-drag-drop>
+<app-drag-drop (filesDropped)="onFilesDropped($event)"></app-drag-drop>
 <div *ngIf="uploads$ | async as uploads; else noUploads" class="container progress-container">
     <div *ngFor="let upload of uploads" class="row mt-2">
         <div class="col-6 px-0">
