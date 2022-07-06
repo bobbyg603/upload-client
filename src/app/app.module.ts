@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgxFileDropModule } from '@bugsplat/ngx-file-drop';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgbNavModule, NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbNavModule, NgbProgressbarModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { DragDropComponent } from './upload/drag-drop/drag-drop.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -32,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     NgbNavModule,
     NgbProgressbarModule,
     NgxFileDropModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot([]),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
